@@ -25,7 +25,7 @@ describe Account do
     test_account.withdrawal(14012023,500)
     test_account.deposit(13012023,2000)
     test_account.deposit(10012023,1000)
-    expect(test_account.print_statement(test_account.withdrawal(14012023,500))).to include "date || credit || debit || balance"
+    expect(test_account.print_statement).should include (10012023|| 1000|| 0.0|| 2500.0)
   end
 
 end

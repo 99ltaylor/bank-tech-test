@@ -9,6 +9,7 @@ class Account
   def initialize
     @balance = NEW_BALANCE
     @transaction_history = []
+    p @transaction_history
   end
 
   def deposit(date, credit)
@@ -18,8 +19,8 @@ class Account
     @transaction_history = []
     @balance = @balance += @credit
     @transaction_history.push(@date, @credit, @debit, @balance)
-    # transaction = Transaction.new
-    # @transaction_history.push(transaction)
+    transaction = Transaction.new
+    @transaction_history.push(transaction)
   end
 
   def withdrawal(date, debit)
@@ -28,18 +29,14 @@ class Account
     @credit = 0.00
     @balance = @balance -= @debit
     @transaction_history.push(@date, @credit, @debit, @balance)
-    # transaction = Transaction.new
-    # @transaction_history.push(transaction)
+    transaction = Transaction.new
+    @transaction_history.push(transaction)
   end
 
-  def print_statement(date, credit, debit, balance)
-    @date = date
-    @credit = credit
-    @debit = debit
-    @balance = balance
+  def print_statement
     puts "date || credit || debit || balance"
-    @transaction_history.each do |item|
-      print "#{item.date} || #{item.credit} || #{item.debit} || #{item.balance}"
-    end
+    p transaction_history.each do |log|
+      puts "#{log.date} || #{log.credit} || #{log.debit} || #{log.balance}"
   end
+end
 end
